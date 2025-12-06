@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Data</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            padding: 30px 0 ;
+            /* height: 100vh; */
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container{
+            background-color: white;
+            width: 1200px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-radius: 15px;
+        }
+        h1{
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        input[type="file"]{
+            display: none;
+        }
+
+        .custom-file-btn {
+            border: 2px solid #ececec;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-block;
+            transition: 0.3s ease;
+        }
+        .custom-file-btn span{
+            display: inline-block;
+            background: #0664d0;
+            border-radius: 8px;
+            padding: 10px;
+            color: white;
+            margin-right: 10px;
+            transition: 0.3s ease;
+            /* padding: 8px 14px; */
+        }
+        .custom-file-btn:active{
+            transform: scale(0.9);
+        }
+        /* --------------------------- */
+        .table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            outline: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 5px;
+            overflow: hidden;
+        }
+        th { background: #564bd1; color: white; padding: 10px; text-align: left;}
+        td { padding: 10px; border: 1px solid #ddd;}
+        tr:nth-child(even) { background: #f8fafc; }
+        tr:hover { background: #e0e7ff; }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Upload CSV File....</h1>
+
+        <label class="custom-file-btn" for="csvFile"><span>Choose File</span> No file chosen</label>
+        <input type="file" id="csvFile" accept=".csv">
+
+        <div id="table-cont"></div>
+    </div>
+    
+    <!-- </tr></thead></table> -->
+
+    <script>
+        document.getElementById("csvFile").addEventListener("change", (e) => {
+            let file = e.target.files[0]
+            // console.log(file);
+            // console.log(e.target.files[0]);
+            
+            if(!file) return
+            // -------------------------------------------------------------------------
+
+            let render = new FileReader()
+            render.onload = (ev) => {
+                // console.log(ev);
+                let text = ev.target.result
+                // console.log(text);
+                let rows = text.split("\n").map(row => row.split(",").map(col => col.trim()))
+                // console.log(rows);
+                // -----------------------------------------------------------------------------
+
+                let table = '<table class="table"><thead><tr>'                    
+                rows[0].forEach(h => {
+                    table += `<th>${h}</th>`
+                })
+                table += '</tr></thead><tbody>'
+                // ----------------------------------------------
+                rows.slice(1).forEach(r => {
+                    // console.log(r);
+                    if(r.length === 1 && r[0] === "") return; // skip empty rows
+                    table += '<tr>'
+                    r.forEach(c => {
+                        // console.log(c);
+                        table += `<td>${c}</td>`
+                    })
+                    table += '</tr>'
+                })
+                table += '</tbody></table>'
+
+
+                document.getElementById('table-cont').innerHTML = table
+            }
+            render.readAsText(file)
+        })
+    </script>
+</body>
+</html>

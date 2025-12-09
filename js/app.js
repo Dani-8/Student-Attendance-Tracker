@@ -12,7 +12,7 @@ export let navigateTo = (view) => {
 }
 
 // RENDER APP BASED ON CURRENT VIEW
-let renderApp = () => {
+export let renderApp = () => {
     let app = document.getElementById("app")
 
     if(currentView === "login"){

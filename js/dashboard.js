@@ -7,13 +7,6 @@ let selectedWeekRange = null;
 
 
 
-
-
-
-
-
-
-
 export let renderDashboardView = () => {
     if(!isDataLoaded){
         return `

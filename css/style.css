@@ -1,0 +1,787 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+/* ======================================================================== */
+/* ======================================================================== */
+/* ======================================================================== */
+
+.app-container{
+    background-color: #fbfdff;
+    width: 100%;
+    /* height: 100vh; */
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* ------------------------------------ */
+
+/**
+    *==============
+    * LOGIN FORM
+    *==============
+*/
+.login-cont{
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 450px;
+}
+.login-cont h1{
+    text-align: center;
+    color: #5b3eb2;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border-bottom: 1px solid #5b3eb2;
+}
+.login-cont div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.login-cont label{
+    margin-bottom: 7px;
+    font-size: 15px;
+    color: rgb(157, 157, 157);
+}
+.login-cont input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+.login-cont input::placeholder{
+    color: #aaa;    
+}
+.login-cont input:focus{
+    outline: none;
+    border-color: #654caf;
+    box-shadow: 0 0 0px 3px rgba(101, 76, 175, 0.5);
+}
+
+.login-cont button{
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(140deg, #654caf, #2e1a69);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s ease;
+}
+.login-cont button:hover{
+    box-shadow: 0 4px 15px rgba(101, 76, 175, 0.9);
+    transition: 0.3s ease;
+}
+.login-cont button:active{
+    transform: scale(0.95);
+}
+
+
+.login-error{
+    text-align: center;
+    color: rgb(246, 51, 51);
+    margin-bottom: 10px;
+
+}
+/* ============================================================== */
+/* ============================================================== */
+/* ============================================================== */
+
+
+/**
+    *========================
+    * LOAD CSV FILE FOR DASHBOARD
+    *========================
+*/
+.loading-data-cont{
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 750px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+.loading-data-cont h1{
+    width: 100%;
+    color: #5b3eb2;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border-bottom: 1px solid #5b3eb2;
+}
+.loading-data-cont .desc{
+    margin-bottom: 20px;
+    color: rgb(100, 100, 100);
+    font-size: 22px;
+}
+
+.loading-data-cont svg{
+    width: 100px;
+    height: 100px;
+    color: rgba(91, 62, 178);
+    animation: glow 1.5s infinite alternate;
+}
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 5px rgba(101, 76, 175));
+    }
+    to {
+        filter: drop-shadow(0 0 20px rgb(46, 30, 96));
+    }
+}
+
+
+.file-upload-msg{
+    margin-top: 20px;
+    color: rgb(118, 95, 186);
+    font-size: 15px;
+}
+
+
+.loading-data-cont label{
+    display: inline-block;
+    background: linear-gradient(140deg, #654caf, #2e1a69);
+    margin-top: 20px;
+    padding: 15px 40px;
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.loading-data-cont label:hover{
+    box-shadow: 0 4px 15px rgba(101, 76, 175, 0.9);
+    transition: 0.3s ease;
+}
+.loading-data-cont label:active{
+    transform: scale(0.95);
+}
+.loading-data-cont input{
+    display: none;
+}
+/* ============================================================== */
+/* ============================================================== */
+/* ============================================================== */
+
+/**
+    *========================
+    * Dashboard
+    *========================
+*/
+
+.dashboard-cont{
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    /* background-color: rgb(229, 197, 197); */
+}
+.dashboard-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px;
+    /* margin-bottom: 10px; */
+}
+.dashboard-header h1{
+    color: #5b3eb2;
+}
+.dashboard-header p{
+    color: rgb(100, 100, 100);
+    font-size: 15px;
+}
+
+.dashboard-header-btns-cont{
+    display: flex;
+    gap: 10px;
+}
+
+.dashboard-header button{
+    padding: 10px 20px;
+    background: linear-gradient(140deg, #654caf, #2e1a69);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.dashboard-header button:hover{
+    box-shadow: 0 4px 15px rgba(101, 76, 175, 0.9);
+    transition: 0.3s ease;
+}
+.dashboard-header button:active{
+    transform: scale(0.95);
+}
+
+.dashboard-header-addstudent-btn{
+    background: linear-gradient(140deg, #40d654, #19a339) !important;
+}
+.dashboard-header-addstudent-btn:hover{
+    box-shadow: 0 4px 15px rgb(84, 169, 212, 0.9) !important;
+    transition: 0.3s ease;
+}
+.dashboard-header-export-btn{
+    background: linear-gradient(140deg, #4ca9f0, #196bbc) !important;
+}
+.dashboard-header-export-btn:hover{
+    box-shadow: 0 4px 15px rgb(84, 169, 212, 0.9) !important;
+    transition: 0.3s ease;
+}
+/* ----------------------------------------------------------------------- */
+
+/* KPIs */
+
+.kpis-cont{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    border-radius: 15px;
+}
+.kpis-cont div{
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    border-radius: 15px;
+    border-bottom: 4px solid;
+    background-color: white;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+}
+.kpis-cont div:hover{
+    box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+}
+.kpis-cont div:nth-child(1){ border-color: #5d12f3;}
+.kpis-cont div:nth-child(2){ border-color: #128ef3;}
+.kpis-cont div:nth-child(3){ border-color: #1abc11;}
+.kpis-cont div:nth-child(4){ border-color: #f31212;}
+
+.kpis-cont div .kpi-heading{
+    color: #5b3eb2;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.kpis-cont div .kpi-number{
+    font-size: 40px;
+    font-weight: 700;
+    color: rgb(74, 72, 72);
+}
+/* ----------------------------------------------------------------------- */
+
+/* ATTENDANCE PERFORMANCE */
+
+.attendance-performance-cont{
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.attendance-performance-cont h1{
+    color: #5b3eb2;
+    font-size: 25px;
+}
+.attendance-performance-cont .attendanceChart{
+    width: 100%;
+    height: 400px;
+}
+/* ---------------------------------------------------------------------------- */
+
+/* FREQUENTLY ABSENCES */
+
+.frequent-absences-cont{
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.frequent-absences-cont h1{
+    color: #5b3eb2;
+    font-size: 25px;
+}
+
+.frequent-absences-cont .table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    outline: 1px solid #ddd;
+    overflow: hidden;
+}
+.frequent-absences-cont .table th,
+.frequent-absences-cont .table td{
+    padding: 12px 25px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.frequent-absences-cont .table th{
+    background-color: rgb(238, 233, 255);
+    color: #5b3eb2;
+    font-weight: 500;
+}
+.frequent-absences-cont .table tr:nth-child(even){
+    background-color: #faf5ff;
+}
+.frequent-absences-cont .table tr:hover{
+    background-color: #ffeaea;
+    transition: 0.3s ease;
+}
+.absences-heading{
+    text-align: right !important;
+}
+.absences-number{
+    text-align: right !important;
+    color: rgb(207, 62, 62);
+    font-weight: 600;
+}
+/* ----------------------------------------------------------------------------- */
+
+/* RAW DATA TABLE + FILTER */
+
+.render-table-and-filter-cont{
+    background-color: white;
+    /* width: 100%; */
+    /* overflow: hidden; */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.render-table-and-filter-cont h1{
+    color: #5b3eb2;
+    font-size: 25px;
+}
+
+.render-table-and-filter-cont .filter-items-cont{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 8fr 2fr);
+    gap: 10px;
+}
+.render-table-and-filter-cont .filter-items-cont input, select{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+.render-table-and-filter-cont .filter-items-cont input::placeholder{
+    color: #aaa;    
+}
+.render-table-and-filter-cont .filter-items-cont input:focus, select:focus  {
+    outline: none;
+    border-color: #654caf;
+    box-shadow: 0 0 0px 3px rgba(101, 76, 175, 0.5);
+}
+
+
+.render-table-and-filter-cont .table-cont{
+    /* width: 100%; */
+    overflow: auto;
+    height: 450px;
+
+}
+.render-table-and-filter-cont .table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    outline: 1px solid #ddd;
+}
+.render-table-and-filter-cont th,
+.render-table-and-filter-cont td{
+    padding: 12px 25px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.render-table-and-filter-cont th{
+    background-color: rgb(238, 233, 255);
+    color: #5b3eb2;
+    font-weight: 500;
+}
+.render-table-and-filter-cont tr:nth-child(even){
+    background-color: #faf5ff;
+}
+
+.render-table-and-filter-cont .raw-table-data-header-name, .render-table-and-filter-cont .raw-table-data-header-id{
+    background-color: rgb(228, 219, 255);
+}
+
+.name-col { position: sticky; left: 0; background: white; z-index: 10; min-width: 180px; }
+.id-col   { position: sticky; left: 180px; background: white; z-index: 10; min-width: 100px; }
+/* .date-header {  text-align: center; } */
+
+.render-table-and-filter-cont .raw-table-data-header-id{
+    border: 1px solid #ddd;
+}
+.render-table-and-filter-cont .raw-table-data-id{
+    border: 1px solid #ddd;
+    color: #6a6a6a;
+    font-size: 13px;
+}
+.render-table-and-filter-cont .date-data{
+    text-align: center;
+min-width: 90px;
+}
+
+
+
+
+
+
+
+
+/* =============================================================================== */
+/* =============================================================================== */
+/* =============================================================================== */
+
+/**
+    *===========================
+    * STUDENTS ATTENDANCE RECORD
+    *===========================
+*/
+
+
+.student-attendance-record{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    /* background-color: rgb(197, 210, 229); */
+}
+
+.student-attendance-record .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px;
+    /* margin-bottom: 10px; */
+}
+.student-attendance-record .header h1{
+    color: #5b3eb2;
+}
+.student-attendance-record .header p{
+    color: rgb(100, 100, 100);
+    font-size: 15px;
+}
+.student-attendance-record .header button{
+    padding: 10px 20px;
+    background: linear-gradient(140deg, #654caf, #2e1a69);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.student-attendance-record .header button:hover{
+    box-shadow: 0 4px 15px rgba(101, 76, 175, 0.9);
+    transition: 0.3s ease;
+}
+.student-attendance-record .header button:active{
+    transform: scale(0.95);
+}
+
+
+
+.attendance-record-cont{
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.attendance-record-cont div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.attendance-record-cont table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    outline: 1px solid #ddd;
+    overflow: hidden;
+}
+.attendance-record-cont table th,
+.attendance-record-cont table td{
+    padding: 12px 25px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.attendance-record-cont table th{
+    background-color: rgb(238, 233, 255);
+    color: #5b3eb2;
+    font-weight: 500;
+}
+.attendance-record-cont table tr:nth-child(even){
+    background-color: #faf5ff;
+}
+
+/* .record-name{}
+.record-id{} */
+.record-status{text-align: center!important;}
+.record-status-heading{text-align: center!important;}
+.record-action{text-align: center!important;}
+.record-action-heading{text-align: center!important;}
+
+.status-block{
+    padding: 2px 10px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-block;
+    background-color: rgb(232, 232, 232); 
+    color: rgb(101, 101, 101);
+}
+.status-unmarked{background-color: rgb(232, 232, 232); color: rgb(101, 101, 101);}
+.status-present{background-color: rgb(210, 255, 213); color: rgb(12, 133, 16);}
+.status-absent{background-color: rgb(255, 210, 220); color: rgb(166, 18, 18);}
+
+
+.mark-attendance-btn{
+    padding: 5px 20px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.mark-attendance-btn:active{
+    transform: scale(0.9);
+}
+
+.mark-attendance-btn.mark-present-btn-default{
+    background-color: rgb(220, 255, 220);
+    color: rgb(12, 133, 16);
+}
+.mark-attendance-btn.mark-present-btn-default:hover{
+    background-color: rgb(185, 255, 185);
+}
+.marked-present-btn-active{
+    background-color: rgb(41, 162, 45);
+    color: white;
+    cursor: default;
+}
+.mark-attendance-btn.mark-absent-btn-default{
+    background-color: rgb(254, 219, 226);
+    color: rgb(166, 18, 18);
+}
+.mark-attendance-btn.mark-absent-btn-default:hover{
+    background-color: rgb(255, 200, 210);
+}
+.marked-absent-btn-active{
+    background-color: rgb(168, 54, 54);
+    color: white;
+    cursor: default;
+}
+
+
+
+
+/* =============================================================== */
+/* =============================================================== */
+/* =============================================================== */
+/* =============================================================== */
+
+
+/**
+    *===========================
+    * ADD STUDENT MODAL
+    *===========================
+*/
+.add-student-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.add-student-modal.show{
+    display: flex !important;
+}
+
+
+.add-student-modal-content{
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 450px;
+    position: relative;
+}
+
+
+.add-student-modal-content .header {
+    /* background-color: lightblue; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #5b3eb2;
+}
+.add-student-modal-content .header h3{
+    color: #5b3eb2;
+}
+.add-student-modal-content .close-btn{
+    font-size: 20px;
+    font-weight: 700;
+    color: #5b3eb2;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.add-student-modal-content .close-btn:active{
+    transform: scale(0.8);
+}
+.add-student-modal-content .close-btn svg{
+    height: 20px;
+    width: 20px;
+}
+/* ----------------------- */
+
+.add-student-modal-content .form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+.add-student-modal-content .form div{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-student-modal-content .form label{
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: rgb(76, 76, 76);
+}
+.add-student-modal-content .form input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #5b3eb2;
+    transition: 0.3s ease;
+}
+.add-student-modal-content .form input:focus{
+    outline: none;
+    border-color: #654caf;
+    box-shadow: 0 0 0px 3px rgba(101, 76, 175, 0.3);
+}
+
+
+.add-student-modal-content .add-student-message .error{
+    text-align: center;
+    color: rgb(246, 51, 51);
+    margin-bottom: 10px;
+
+}
+.add-student-modal-content .add-student-message .success{
+    text-align: center;
+    color: rgb(48, 191, 26);
+    margin-bottom: 10px;
+
+}
+
+
+
+.add-student-modal-content .form .btns-cont{
+    flex-direction: row;
+    gap: 8px;
+    justify-content: flex-end;
+}
+.add-student-modal-content .form .btns-cont button{
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.add-student-modal-content .form .btns-cont button:active{
+    transform: scale(0.95);
+}
+.add-student-modal-content .form .btns-cont .add-btn{
+    color: white;
+    font-weight: 600;
+    background: linear-gradient(140deg, #654caf, #2e1a69);
+}
+.add-student-modal-content .form .btns-cont .cancel-btn{
+    color: rgb(53, 53, 53);
+    background-color: transparent;
+    border: 1px solid #8a8a8a;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

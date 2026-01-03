@@ -153,6 +153,7 @@ body{
     }
 }
 
+<<<<<<< HEAD
 
 .file-upload-msg{
     margin-top: 20px;
@@ -161,6 +162,8 @@ body{
 }
 
 
+=======
+>>>>>>> 36be78812d1f094f85cc41018151bc8ccc7ba7a7
 .loading-data-cont label{
     display: inline-block;
     background: linear-gradient(140deg, #654caf, #2e1a69);
@@ -219,12 +222,15 @@ body{
     color: rgb(100, 100, 100);
     font-size: 15px;
 }
+<<<<<<< HEAD
 
 .dashboard-header-btns-cont{
     display: flex;
     gap: 10px;
 }
 
+=======
+>>>>>>> 36be78812d1f094f85cc41018151bc8ccc7ba7a7
 .dashboard-header button{
     padding: 10px 20px;
     background: linear-gradient(140deg, #654caf, #2e1a69);
@@ -242,6 +248,7 @@ body{
 .dashboard-header button:active{
     transform: scale(0.95);
 }
+<<<<<<< HEAD
 
 .dashboard-header-addstudent-btn{
     background: linear-gradient(140deg, #40d654, #19a339) !important;
@@ -257,6 +264,8 @@ body{
     box-shadow: 0 4px 15px rgb(84, 169, 212, 0.9) !important;
     transition: 0.3s ease;
 }
+=======
+>>>>>>> 36be78812d1f094f85cc41018151bc8ccc7ba7a7
 /* ----------------------------------------------------------------------- */
 
 /* KPIs */
@@ -621,6 +630,7 @@ min-width: 90px;
     cursor: default;
 }
 
+<<<<<<< HEAD
 
 
 
@@ -769,6 +779,9 @@ min-width: 90px;
 
 
 
+=======
+/*  */
+>>>>>>> 36be78812d1f094f85cc41018151bc8ccc7ba7a7
 
 
 

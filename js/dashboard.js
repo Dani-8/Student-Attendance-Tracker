@@ -1,6 +1,6 @@
 import { navigateTo } from "./app.js"
 import { handleLogin } from "./login.js"
-import { studentData, allDates, todayDate, calculateStats, renderAttendanceChart, renderRawDataTable, addStudent} from "./utils.js"
+import { studentData, allDates, todayDate, calculateStats, renderAttendanceChart, renderRawDataTable, addStudent, renderWeekFilterButtons} from "./utils.js"
 
 import {isDataLoaded} from "./utils.js"
 // ================================================================================================================================================
@@ -129,6 +129,8 @@ export let renderDashboardView = () => {
                     <button class="dashboard-header-btn" onclick="navigateTo('attendance')">Mark Today's Attendance</button>
                 </div>
             </header>
+
+            ${renderWeekFilterButtons()}
 
             <div class="kpis-cont">
                 <div><p class="kpi-heading">Total Students</p><p class="kpi-number">${stats.totalStudents}</p></div>

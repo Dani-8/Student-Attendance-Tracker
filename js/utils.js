@@ -1,3 +1,5 @@
+import { navigateTo } from "./app.js"
+
 export let todayDate = (() => {
     let d = new Date
     let twoDigits = n => n < 10 ? `0${n}`: n
@@ -241,37 +243,37 @@ export let getVisibleDates = () => {
 
 export let renderWeekFilterButtons = () => {
     let weeks = getWeeksRange()
+    if(weeks.length === 0) return `<div class="week-filter-btns-cont"><button onclick="setSelectedWeek(null)" class="week-btn active">All</button></div>`
 
     let html = `
-        
-    `
+        <div class="week-filter-btns-cont">
+            <button onclick="setSelectedWeek(null)" class="week-btn ${!selectedWeekRange ? 'active' : ''}">All</button>`   
+
+    weeks.forEach((w, i) => {
+        let active = selectedWeekRange && selectedWeekRange.start === w.start
+        let startLabel = w.date[0].split("/").slice(0,2).join('/')
+        let endLabel = w.date[w.date.length-1].split("/").slice(0,2).join('/')
 
 
+        html += `
+            <button onclick="setSelectedWeek('${w.start}', '${w.end}')" class="week-btn ${active ? 'active' : ''}">
+                Week ${i+1}: ${startLabel} - ${endLabel}
+            </button>
+        `
+    })
 
+
+    html += `</div>`;
+    return html;
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+window.setSelectedWeek = (start, end) => {
+    selectedWeekRange = start ? {start, end} : null
+    navigateTo('dashboard')
+}
 
 
 // --------------------------------------------------------------------------------------
@@ -314,10 +316,11 @@ export let calculateStats = () => {
     let todayPresentCount = 0
     // ------------------------------
 
-    let allUniqueDates = new Set(allDates)
-    // console.log("🚀 ~ calculateStats ~ allUniqueDates:", allUniqueDates)
-    if(studentData.length > 0 && !allUniqueDates.has(todayDate)){
-        allUniqueDates.add(todayDate)
+    let visibleDates = getVisibleDates();
+    let allUniqueDates = new Set(visibleDates);
+
+    if (studentData.length > 0 && !allUniqueDates.has(todayDate) && visibleDates.includes(todayDate)) {
+        allUniqueDates.add(todayDate);
     }
     // --------------------------------------------
 
@@ -476,7 +479,7 @@ export let renderAttendanceChart = (topStudents) => {
 export let generateRawTableBody = (students) => {
     return students.map(student => {
         let studentRecords = attendanceRecords[student.id] || {}
-        let dateCells = [...allDates].sort((a,b) => {
+        let dateCells = getVisibleDates().sort((a,b) => {
             let [d1,m1,y1] = a.split('/')
             let [d2,m2,y2] = b.split('/')
             return new Date(`${y1}-${m1}-${d1}`) - new Date(`${y2}-${m2}-${d2}`)
@@ -558,7 +561,7 @@ export let renderRawDataTable = () => {
         <tr>
             <th class="raw-table-data-header-name name-col">Student Name</th>
             <th class="raw-table-data-header-id id-col">Student ID</th>
-            ${[...allDates].sort((a,b) => {
+            ${getVisibleDates().sort((a,b) => {
                 let [d1,m1,y1] = a.split('/')
                 let [d2,m2,y2] = b.split('/')
                 return new Date(`${y1}-${m1}-${d1}`) - new Date(`${y2}-${m2}-${d2}`)

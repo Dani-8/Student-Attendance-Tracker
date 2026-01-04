@@ -264,6 +264,56 @@ body{
 
 /* ----------------------------------------------------------------------- */
 
+/* WEEKS FILTER BTNS */
+
+.week-filter-btns-cont{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.week-btn{
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: #5b3eb2;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: rgb(229, 217, 255);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.week-btn:hover{
+    background-color: rgb(212, 192, 255);
+}
+.week-btn:active{
+    transform: scale(0.9);
+}
+
+.week-btn.active{
+    background-color: rgb(121, 79, 212);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------- */
+
 /* KPIs */
 
 .kpis-cont{

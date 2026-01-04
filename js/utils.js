@@ -172,13 +172,83 @@ export let markAttendance = (studentId, status) => {
 let selectedWeekRange = null
 
 
+let standardizeDate = (date) => {
+    let [d, m, y] = date.split("/")
+    return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`
+}
+// console.log(standardizeDate(todayDate));
+
+
+let getWeeksRange = () => {
+    if(allDates.length === 0) return []
+
+    let sortedDates = [...allDates].sort((a, b) => {
+        return new Date(standardizeDate(a)) - new Date(standardizeDate(b))
+    })  
+
+    let firstDate = new Date(standardizeDate(sortedDates[0]))
+    let lastDate = new Date(standardizeDate(sortedDates[sortedDates.length - 1]))
+
+    // Start from Monday of first week
+    let start = new Date(firstDate)
+    start.setDate(firstDate.getDate() - firstDate.getDay() + 1)
+    // -----------------------------------------------------------------------------
+
+
+    let range = []
+    let current = new Date(start)
+
+    while(current <= lastDate){
+        let weekEnd = new Date(current)
+        weekEnd.setDate(current.getDate() + 6)
+    
+        
+        let weekDates = sortedDates.filter(d => {
+            let dt = new Date(standardizeDate(d))
+            return dt >= current && dt <= weekEnd
+        })
+        
+        if(weekDates.length > 0){
+            range.push({
+                start: current.toISOString().slice(0, 10),
+                end: weekEnd.toISOString().slice(0, 10),
+                date: weekDates,
+                label: `Week ${range.length + 1}`
+            })
+        }
+    
+        current.setDate(current.getDate() + 7)
+    }
+
+    return range
+}
 
 
 
 
+let isDateInSelectedWeek = (date) => {
+    if(!selectedWeekRange) return true
+
+    let std = standardizeDate(date)
+    return std >= selectedWeekRange.start && std <= selectedWeekRange.end
+}
+
+export let getVisibleDates = () => {
+    return allDates.filter(isDateInSelectedWeek)
+}
 
 
 
+export let renderWeekFilterButtons = () => {
+    let weeks = getWeeksRange()
+
+    let html = `
+        
+    `
+
+
+
+}
 
 
 

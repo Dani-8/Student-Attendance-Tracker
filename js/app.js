@@ -3,7 +3,7 @@ import { renderDashboardView } from './dashboard.js'
 import { renderAttendanceView } from './attendance.js'
 import { CSVData, loadCSVData, todayDate, markAttendance } from './utils.js'
 
-let currentView = 'dashboard'
+let currentView = 'login'
 // ==================================================================================
 
 export let navigateTo = (view) => {
